@@ -34,7 +34,7 @@
             <div class="menu-item dropdown dropdown-mobile-full">
                 <a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
                     <div class="menu-img online">
-                        <img src="/assets/img/user/profile.jpg" alt="Profile">
+                        <img src="../../../css/images/user.png" alt="Profile">
                     </div>
                     <div class="menu-text d-sm-block d-none">{{ $page.props.auth.user.username }}</div>
                 </a>
