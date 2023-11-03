@@ -17,6 +17,12 @@
                                     </div>
                                     <div class="list-group-item d-flex align-items-center">
                                         <div class="flex-1 text-break">
+                                            <div>角色</div>
+                                            <div class="text-inverse text-opacity-50">{{ props.role.join(', ') }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="flex-1 text-break">
                                             <div>密码</div>
                                         </div>
                                         <div>
@@ -87,6 +93,15 @@ import TextInput from "@/Components/TextInput.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ref} from "vue";
 import {ElMessage} from "element-plus";
+
+const props = defineProps({
+    status: {
+        type: String,
+    },
+    role: {
+        type: Array
+    }
+});
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);

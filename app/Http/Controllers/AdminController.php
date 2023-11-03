@@ -38,6 +38,9 @@ class AdminController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'status' => session('status'),
+            'role' => Auth::user()->getRoleNames()->map(function ($role) {
+                return __($role);
+            })
         ]);
     }
 
