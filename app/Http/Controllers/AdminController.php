@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\LoginRequest;
+use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,6 +54,25 @@ class AdminController extends Controller
 
         $request->user()->update([
             'password' => Hash::make($validated['password']),
+        ]);
+
+        return back();
+    }
+
+    public function createAdmin(Request $request): RedirectResponse
+    {
+        if (!Auth::user()->hasPermissionTo('Create Admin')) {
+            return back()->with('error', '权限不足');
+        }
+
+        $validated = $request->validate([
+            'username' => ['required', 'unique:admins'],
+            'password' => ['required']
+        ]);
+
+        Admin::create([
+            'username' => $validated['username'],
+            'password' => $validated['password']
         ]);
 
         return back();
