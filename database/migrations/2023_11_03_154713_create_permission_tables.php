@@ -116,6 +116,20 @@ return new class extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+        // create roles
+
+        \Spatie\Permission\Models\Role::create([
+            'name' => 'Super Admin'
+        ]);
+
+        \Spatie\Permission\Models\Role::create([
+            'name' => 'Admin'
+        ]);
+
+        $admin = \App\Models\Admin::where('username', 'admin')->first();
+
+        $admin->assignRole('Super Admin');
     }
 
     /**
