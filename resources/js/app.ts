@@ -1,7 +1,7 @@
 import './bootstrap';
-import '../css/app.css';
 import '../css/styles.scss';
 import 'element-plus/dist/index.css';
+import '../css/app.css';
 
 import { createApp, h, DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -21,14 +21,6 @@ import '@fortawesome/fontawesome-free/scss/v4-shims.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap';
 
-import Card from '@/Components/bootstrap/Card.vue';
-import CardBody from '@/Components/bootstrap/CardBody.vue';
-import CardHeader from '@/Components/bootstrap/CardHeader.vue';
-import CardFooter from '@/Components/bootstrap/CardFooter.vue';
-import CardGroup from '@/Components/bootstrap/CardGroup.vue';
-import CardImgOverlay from '@/Components/bootstrap/CardImgOverlay.vue';
-import CardExpandToggler from '@/Components/bootstrap/CardExpandToggler.vue';
-
 import VueApexCharts from "vue3-apexcharts";
 
 const emitter = mitt();
@@ -45,13 +37,6 @@ createInertiaApp({
             .use(Vue3ProgressPlugin)
             .use(PerfectScrollbar)
             .use(VueApexCharts)
-            .component('Card', Card)
-            .component('CardBody', CardBody)
-            .component('CardHeader', CardHeader)
-            .component('CardFooter', CardFooter)
-            .component('CardGroup', CardGroup)
-            .component('CardImgOverlay', CardImgOverlay)
-            .component('CardExpandToggler', CardExpandToggler)
             .mount(el);
     },
     progress: {
