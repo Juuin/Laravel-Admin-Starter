@@ -130,6 +130,8 @@ return new class extends Migration
         $admin = \App\Models\Admin::where('username', 'admin')->first();
 
         $admin->assignRole('Super Admin');
+
+        \Illuminate\Support\Facades\Artisan::call(\App\Console\Commands\SyncPermissions::class);
     }
 
     /**
