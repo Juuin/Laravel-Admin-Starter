@@ -184,4 +184,16 @@ return [
 
         'store' => 'default',
     ],
+
+    'permissions' => [
+        'common' => [
+            'Visit Dashboard'
+        ],
+        'admin' => [
+            'Update Password', 'Create Admin'
+        ],
+        'permissions' => [
+            'Create Role'
+        ]
+    ]
 ];
