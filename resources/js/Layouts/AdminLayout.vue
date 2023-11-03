@@ -50,7 +50,7 @@ const appOption = ref({
 
 const appSidebarMenu = [
     {
-        "text":"第一导航栏",
+        "text":"后台管理",
         "isHeader":true
     },
     {
@@ -59,39 +59,20 @@ const appSidebarMenu = [
         "text":"管理台"
     },
     {
-        "url":"/nav2",
-        "icon":"bi bi-bar-chart",
-        "text":"导航2"
-    },
-    {
-        "icon":"bi bi-envelope",
-        "text":"导航3",
-        "children":[
-            {
-                "url":"/nav4",
-                "text":"导航4"
-            },
-            {
-                "url":"/nav5",
-                "text":"导航5"
-            }
-        ]
-    },
-    {
         "isDivider":true
     },
     {
-        "text":"第二导航栏",
+        "text":"管理员管理",
         "isHeader":true
     },
     {
         "url":"/nav6",
         "icon":"bi bi-columns-gap",
-        "text":"导航6"
+        "text":"管理员列表"
     },
     {
         "icon":"bi bi-bag-check",
-        "text":"导航7",
+        "text":"管理员权限",
         "children":[
             {
                 "url":"/nav8",
