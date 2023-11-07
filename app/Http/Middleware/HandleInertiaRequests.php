@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -34,11 +35,39 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'config' => [
+                'sidemenu' => $this->formatSideMenu()
+            ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
                 ]);
             },
         ]);
+    }
+
+    protected function formatSideMenu()
+    {
+        $menus = config('sidemenu');
+
+        foreach ($menus as $index => $menu) {
+            if (isset($menu['permission']) && !Auth::user()->hasPermissionTo($menu['permission'])) {
+                unset($menus[$index]);
+            }
+
+            if (isset($menu['isHeader']) && !isset($menus[$index+1])){
+                unset($menus[$index]);
+            }
+
+            if (isset($menu['isHeader']) && isset($menus[$index+1]['isHeader'])){
+                unset($menus[$index]);
+            }
+
+            if (isset($menu['isHeader']) && isset($menus[$index+1]['isDivider'])){
+                unset($menus[$index]);
+            }
+        }
+
+        return $menus;
     }
 }
