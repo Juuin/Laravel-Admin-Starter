@@ -7,7 +7,7 @@ return [
     ],
     [
         'url' => '/',
-        'text' => '管理台',
+        'text' => '数据大屏',
         'icon' => 'bi bi-cpu',
         'permission' => 'Visit Dashboard'
     ],

@@ -49,6 +49,13 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if (Auth::user()->toArray()['frozen']) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'username' => trans('auth.failed.frozen'),
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

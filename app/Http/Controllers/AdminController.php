@@ -66,9 +66,10 @@ class AdminController extends Controller
 
     public function adminList()
     {
+        $admins = Admin::all(['id', 'username', 'created_at', 'login_time', 'login_ip', 'frozen'])->toArray();
         return Inertia::render('Admin/List', [
             'status' => session('status'),
-            'admins' => Admin::all(['id', 'username', 'created_at', 'login_time', 'login_ip'])->toArray()
+            'admins' => $admins
         ]);
     }
 

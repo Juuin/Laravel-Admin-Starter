@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('login_ip')->nullable();
             $table->dateTime('login_time')->nullable();
+            $table->boolean('frozen')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
