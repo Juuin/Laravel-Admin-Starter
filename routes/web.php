@@ -19,11 +19,12 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [\App\Http\Controllers\AdminController::class, 'login']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'permit'])->group(function () {
     Route::get('/', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
     Route::get('logout', [\App\Http\Controllers\AdminController::class, 'logout'])->name('logout');
     Route::get('profile/edit', [\App\Http\Controllers\AdminController::class, 'edit'])->name('profile.edit');
     Route::put('password/update', [\App\Http\Controllers\AdminController::class, 'updatePassword'])->name('password.update');
+    Route::get('admin/list', [\App\Http\Controllers\AdminController::class, 'adminList'])->name('admin.list');
 });

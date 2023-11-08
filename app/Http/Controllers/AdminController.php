@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\LoginRequest;
 use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,10 @@ class AdminController extends Controller
     public function login(LoginRequest $request) : RedirectResponse {
         $request->authenticate();
         $request->session()->regenerate();
+        Auth::user()->update([
+            'login_time' => Carbon::now(),
+            'login_ip' => $request->ip()
+        ]);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -57,6 +62,14 @@ class AdminController extends Controller
         ]);
 
         return back();
+    }
+
+    public function adminList()
+    {
+        return Inertia::render('Admin/List', [
+            'status' => session('status'),
+            'admins' => Admin::all(['id', 'username', 'created_at', 'login_time', 'login_ip'])->toArray()
+        ]);
     }
 
     public function createAdmin(Request $request): RedirectResponse

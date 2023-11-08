@@ -51,7 +51,7 @@ class HandleInertiaRequests extends Middleware
         $menus = config('sidemenu');
 
         foreach ($menus as $index => $menu) {
-            if (isset($menu['permission']) && !Auth::user()->hasPermissionTo($menu['permission'])) {
+            if (isset($menu['permission']) && Auth::hasUser() && !Auth::user()->hasPermissionTo($menu['permission'])) {
                 unset($menus[$index]);
             }
 

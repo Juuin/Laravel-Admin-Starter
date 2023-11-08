@@ -17,5 +17,11 @@ return [
     [
         'text' => '管理员管理',
         'isHeader' => true
-    ]
+    ],
+    [
+        'url' => '/admin/list',
+        'text' => '管理员列表',
+        'icon' => 'bi bi-cpu',
+        'permission' => 'Admin List'
+    ],
 ];

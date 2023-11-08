@@ -190,7 +190,7 @@ return [
             'Visit Dashboard'
         ],
         'admin' => [
-            'Update Password', 'Create Admin'
+            'Update Password', 'Create Admin', 'Admin List'
         ],
         'permissions' => [
             'Create Role'
